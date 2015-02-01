@@ -5,10 +5,10 @@ module.exports = {
   entry: [
     'webpack-dev-server/client?http://0.0.0.0:3000',
     'webpack/hot/only-dev-server',
-    './scripts/main'
+    './app/scripts/main'
   ],
   output: {
-    path: __dirname + '/scripts/',
+    path: __dirname + '/app/scripts/',
     filename: 'bundle.js',
     publicPath: '/scripts/'
   },

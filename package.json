@@ -19,8 +19,7 @@
     "webpack-dev-server": "^1.7.0"
   },
   "scripts": {
-    "build": "webpack --optimize-minimize scripts/main.js build/mains.js",
-    "start": "node server.js",
+    "start": "node server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
