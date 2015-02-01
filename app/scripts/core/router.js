@@ -4,14 +4,14 @@ var { Route, DefaultRoute } = Router;
 
 var Layout = require('../components/Layout');
 
-var HelloWorld = require('../components/HelloWorld');
+var Home = require('../pages/Home');
 var CreateQuest = require('../pages/CreateQuest');
 
 var routes = (
     <Route handler={Layout}>
-        <DefaultRoute handler={HelloWorld}/>
-        <Route name="helloWorld" path="/" handler={HelloWorld}/>
-        <Route name="createQuest" path="/quests/create" handler={CreateQuest}/>
+        <DefaultRoute handler={Home}/>
+        <Route name="Home" path="/" handler={Home}/>
+        <Route name="CreateQuest" path="/quests/create" handler={CreateQuest}/>
     </Route>
 );
 
