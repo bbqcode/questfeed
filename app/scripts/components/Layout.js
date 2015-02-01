@@ -3,12 +3,16 @@ var Router = require('react-router');
 var RouteHandler = Router.RouteHandler;
 var Link = Router.Link;
 
+var HeaderMenu = require('./HeaderMenu')
+
 var Layout = React.createClass({
     render: () => {
         return (
             <div>
-                <Link to="CreateQuest">Quests</Link>| <Link to='Home'>Home</Link>
-                <RouteHandler/>
+                <HeaderMenu />
+                <div className='main container'>
+                    <RouteHandler/>
+                </div>
             </div>
         );
     }
