@@ -1,4 +1,6 @@
-var injectTapEventPlugin = require("react-tap-event-plugin");
+require('../styles/main.less')
+
+var injectTapEventPlugin = require('react-tap-event-plugin');
 //Needed for onTouchTap
 //Can go away when react 1.0 release
 //Check this repo:
