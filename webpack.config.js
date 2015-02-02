@@ -1,4 +1,5 @@
 var webpack = require('webpack');
+var path = require('path');
 
 module.exports = {
   devtool: 'eval',
@@ -20,7 +21,11 @@ module.exports = {
     loaders: [
       { test: /\.js$/, loaders: ['react-hot', 'jsx?harmony'] },
       { test: /\.jsx$/, loaders: ['react-hot', 'jsx?harmony'] },
-      { test: /\.less$/, loader: 'style!raw!less' }
+      { 
+        test: /\.scss$/, 
+        loader: "style!raw!sass?outputStyle=expanded&" +
+                "includePaths[]=" + (path.resolve(__dirname, "./node_modules/")) 
+      }
     ]
   }
 }

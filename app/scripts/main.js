@@ -1,4 +1,4 @@
-require('../styles/main.less');
+require('../styles/main.scss');
 
 var React = require('react');
 var injectTapEventPlugin = require('react-tap-event-plugin');
