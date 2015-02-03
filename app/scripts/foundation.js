@@ -19,8 +19,8 @@ require('imports?jQuery=jquery!exports?jQuery!zurb-foundation-5/js/foundation/fo
 require('imports?jQuery=jquery!exports?jQuery!zurb-foundation-5/js/foundation/foundation.equalizer');
 
 var initialize = function() {
-	console.log('Initialize foundation');
-	return $(document).foundation();
+    console.log('Initialize foundation');
+    return $(document).foundation();
 }
 
 module.exports.initialize = initialize;
