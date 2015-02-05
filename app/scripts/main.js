@@ -1,12 +1,8 @@
+var React = require('react');
+
 require('../styles/main.scss');
 
-var React = require('react');
-var injectTapEventPlugin = require('react-tap-event-plugin');
-//Needed for onTouchTap
-//Can go away when react 1.0 release
-//Check this repo:
-//https://github.com/zilverline/react-tap-event-plugin
-injectTapEventPlugin();
+require('./stores/QuestStore');
 
 var router = require('./core/router');
 

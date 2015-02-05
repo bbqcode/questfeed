@@ -1,6 +1,7 @@
 var React = require('react');
 var { Navigation } = require('react-router');
-var mui = require('material-ui');
+
+var QuestActions = require('../actions/QuestActions');
 
 module.exports = React.createClass({
     mixins: [ Navigation ],
@@ -88,6 +89,17 @@ module.exports = React.createClass({
     handleSubmit: function (ev) {
         ev.preventDefault();
 
+        var data = {
+            name: this.state.name,
+            description: this.state.description,
+            experience: this.state.experience,
 
+            latitude: this.state.latitude,
+            longitude: this.state.longitude,
+
+            isPublic: this.state.isPublic
+        };
+
+        QuestActions.createQuest(data);
     }
 });
