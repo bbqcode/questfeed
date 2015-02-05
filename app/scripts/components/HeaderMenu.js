@@ -16,6 +16,7 @@ var HeaderMenu = React.createClass({
                 </ul>
                 <section className='top-bar-section'>
                     <ul className='right'>
+                        <Link className='button' to='Quests'>Quests</Link>
                         <Link className='button' to='CreateQuest'>Create Quest</Link>
                         <a className='button' href='#' data-reveal-id='helloworld'>
                             Hello World
