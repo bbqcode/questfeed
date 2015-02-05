@@ -1,7 +1,10 @@
 var React = require('react');
+var { Navigation } = require('react-router');
 var mui = require('material-ui');
 
 module.exports = React.createClass({
+    mixins: [ Navigation ],
+
     getInitialState() {
         return {
             id: '',
@@ -69,20 +72,22 @@ module.exports = React.createClass({
             </form>
         );
     },
-    handleChange(propName, e) {
+    handleChange(propName, ev) {
         var state = {};
         var newVal = null;
 
-        if (e.target.type === 'checkbox') {
-            newVal = e.target.checked;
+        if (ev.target.type === 'checkbox') {
+            newVal = ev.target.checked;
         } else {
-            newVal = e.target.value;
+            newVal = ev.target.value;
         }
         state[propName] = newVal;
 
         this.setState(state);
     },
-    handleSubmit: function () {
+    handleSubmit: function (ev) {
+        ev.preventDefault();
+
 
     }
 });
