@@ -32,3 +32,13 @@ node_modules
 
 # Users Environment Variables
 .lock-wscript
+
+# MongoDB
+data/mongod.log
+data/db/*
+
+# Logs
+logs/*
+
+# Temporary files
+temp/*

@@ -1,15 +1,17 @@
 var webpack = require('webpack');
 var path = require('path');
+var port = require('./configurations').webpack.port
 
 module.exports = {
+  port: port,
   devtool: 'eval',
   entry: [
-    'webpack-dev-server/client?http://0.0.0.0:3000',
+    'webpack-dev-server/client?http://0.0.0.0:' + port,
     'webpack/hot/only-dev-server',
     './app/scripts/main'
   ],
   output: {
-    path: __dirname + '/app/scripts/',
+    path: __dirname + '../../app/',
     filename: 'bundle.js',
     publicPath: '/scripts/'
   },
@@ -24,7 +26,7 @@ module.exports = {
       { 
         test: /\.scss$/, 
         loader: "style!raw!sass?outputStyle=expanded&" +
-                "includePaths[]=" + (path.resolve(__dirname, "./node_modules/")) 
+                "includePaths[]=" + (path.resolve(__dirname, "../../node_modules/")) 
       }
     ]
   }
