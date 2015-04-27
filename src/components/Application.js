@@ -1,6 +1,12 @@
 import React from "react";
-import {handleHistory} from "fluxible-router";
-import {provideContext} from "fluxible/addons";
+import { handleHistory } from "fluxible-router";
+import { provideContext } from "fluxible/addons";
+
+import HeaderMenu from "./HeaderMenu";
+
+if (process.env.BROWSER) {
+    require("../../app/styles/main.scss");
+}
 
 var Application = React.createClass({
     contextTypes: {
@@ -9,8 +15,16 @@ var Application = React.createClass({
     },
     render() {
         var Handler = this.props.currentRoute.get("handler");
+
         //render content
-        return <Handler />;
+        return (
+            <div>
+                <HeaderMenu />
+                <div className='main container'>
+                    <Handler/>
+                </div>
+            </div>
+        );
     }
 });
 

@@ -20,6 +20,7 @@
     "react": "^0.13.2",
     "react-router": "^0.13.2",
     "reflux": "^0.2.7",
+    "serialize-javascript": "^1.0.0",
     "when": "^3.7.2",
     "zurb-foundation-5": "^5.4.7"
   },

@@ -1,14 +1,17 @@
 import React from "react";
+import serialize from "serialize-javascript";
+import { navigateAction } from "fluxible-router";
 
 import app from "../app";
 import HtmlDocument from "./HtmlDocument";
 
-import { navigateAction } from "fluxible-router";
-
 function render(req, res, next) {
+
     var context = app.createContext();
+
     context.executeAction(navigateAction, { url: req.url }, function (err) {
         let webpackStats;
+
         if (process.env.NODE_ENV === "development") {
             webpackStats = require("./webpack-stats.json");
 
@@ -26,9 +29,12 @@ function render(req, res, next) {
             return;
         }
 
+        var exposed = "window.App=" + serialize(app.dehydrate(context)) + ";";
+
         const markup = React.renderToString(context.createElement());
         const html = React.renderToStaticMarkup(
             <HtmlDocument
+                state={exposed}
                 markup={markup}
                 script={webpackStats.script}
                 css={webpackStats.css}
