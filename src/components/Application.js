@@ -1,6 +1,6 @@
-import React from 'react';
-import {handleHistory} from 'fluxible-router';
-import {provideContext} from 'fluxible/addons';
+import React from "react";
+import {handleHistory} from "fluxible-router";
+import {provideContext} from "fluxible/addons";
 
 var Application = React.createClass({
     contextTypes: {
@@ -8,7 +8,7 @@ var Application = React.createClass({
         executeAction: React.PropTypes.func
     },
     render() {
-        var Handler = this.props.currentRoute.get('handler');
+        var Handler = this.props.currentRoute.get("handler");
         //render content
         return <Handler />;
     }
