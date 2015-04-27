@@ -34,10 +34,10 @@ function render(req, res, next) {
         const markup = React.renderToString(context.createElement());
         const html = React.renderToStaticMarkup(
             <HtmlDocument
-                state={exposed}
+                css={webpackStats.css}
                 markup={markup}
                 script={webpackStats.script}
-                css={webpackStats.css}
+                state={exposed}
             />
         );
         const doctype = "<!DOCTYPE html>";

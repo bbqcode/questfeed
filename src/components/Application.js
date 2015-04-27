@@ -5,13 +5,16 @@ import { provideContext } from "fluxible/addons";
 import HeaderMenu from "./HeaderMenu";
 
 if (process.env.BROWSER) {
-    require("../../app/styles/main.scss");
+    require("../styles/main.scss");
 }
 
 var Application = React.createClass({
     contextTypes: {
         getStore: React.PropTypes.func,
         executeAction: React.PropTypes.func
+    },
+    propTypes: {
+        currentRoute: React.PropTypes.object.isRequired()
     },
     render() {
         var Handler = this.props.currentRoute.get("handler");

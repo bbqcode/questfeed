@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "fluxible-router";
 
 export default React.createClass({
     render() {
@@ -7,17 +8,19 @@ export default React.createClass({
                 <ul className="title-area">
                     <li className="name">
                         <h1>
-                            <a href="/">questfeed</a>
+                            <NavLink routeName="quests">questfeed</NavLink>
                         </h1>
                     </li>
                 </ul>
                 <section className="top-bar-section">
                     <ul className="right">
-                        <a className="button" href="/Quests">Quests</a>
-                        <a className="button" href="/CreateQuest">Create Quest</a>
-                        <a className="button" href="#" data-reveal-id="helloworld">
-                            Hello World
-                        </a>
+                        <li>
+                            <NavLink routeName="quests">Quests</NavLink></li>
+                        <li>
+                            <NavLink routeName="createQuest">Create Quest</NavLink></li>
+                        <li>
+                            <a data-reveal-id="helloworld">Hello World</a>
+                        </li>
                     </ul>
                 </section>
                 <div id="helloworld" className="reveal-modal" data-reveal>

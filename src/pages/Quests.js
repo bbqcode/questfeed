@@ -1,12 +1,13 @@
-var React = require('react');
-var Reflux = require('reflux');
-var { Navigation } = require('react-router');
+var React = require("react");
 
-var QuestActions = require('../actions/QuestActions');
-var QuestStore = window.t = require('../stores/QuestStore');
+//var Reflux = require("reflux");
+//var { Navigation } = require("react-router");
+
+var QuestActions = require("../../app/scripts/actions/QuestActions");
+var QuestStore = require("../../app/scripts/stores/QuestStore");
 
 module.exports = React.createClass({
-    mixins: [ Reflux.listenTo(QuestStore, 'onChange'), Navigation ],
+    //mixins: [ Reflux.listenTo(QuestStore, "onChange"), Navigation ],
 
     getInitialState() {
         return { quests: QuestStore.quests };

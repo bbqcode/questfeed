@@ -1,16 +1,13 @@
-var React = require('react');
-var { Navigation } = require('react-router');
+import React from "react";
 
-var QuestActions = require('../actions/QuestActions');
+import QuestActions from "../../app/scripts/actions/QuestActions";
 
-module.exports = React.createClass({
-    mixins: [ Navigation ],
-
+export default React.createClass({
     getInitialState() {
         return {
-            id: '',
-            name: '',
-            description: '',
+            id: "",
+            name: "",
+            description: "",
             experience: 10,
 
             latitude: 45.5,
@@ -18,12 +15,12 @@ module.exports = React.createClass({
 
             objectives: [],
 
-            creator: '',
+            creator: "",
 
             isPublic: true,
 
-            createdOn: '',
-            finishedOn: ''
+            createdOn: "",
+            finishedOn: ""
         };
     },
     render() {
@@ -33,32 +30,32 @@ module.exports = React.createClass({
                 <div className="row">
                     <div className="large-12 columns">
                         <label>Quest Name
-                            <input type="text" placeholder="Quest Name" value={this.state.name} onChange={this.handleChange.bind(this, 'name')}/>
+                            <input type="text" placeholder="Quest Name" value={this.state.name} onChange={this.handleChange.bind(this, "name")}/>
                         </label>
                     </div>
                 </div>
                 <div className="row">
                     <div className="large-12 columns">
                         <label>Quest Description
-                            <textarea placeholder="Quest Description" value={this.state.description} onChange={this.handleChange.bind(this, 'description')}/>
+                            <textarea placeholder="Quest Description" value={this.state.description} onChange={this.handleChange.bind(this, "description")}/>
                         </label>
                     </div>
                 </div>
                 <div className="row">
                     <div className="small-6 columns">
                         <label>Latitude
-                            <input type="text" placeholder="Latitude" value={this.state.latitude} onChange={this.handleChange.bind(this, 'latitude')}/>
+                            <input type="text" placeholder="Latitude" value={this.state.latitude} onChange={this.handleChange.bind(this, "latitude")}/>
                         </label>
                     </div>
                     <div className="small-6 columns">
                         <label>Longitude
-                            <input type="text" placeholder="Longitude" value={this.state.longitude} onChange={this.handleChange.bind(this, 'longitude')}/>
+                            <input type="text" placeholder="Longitude" value={this.state.longitude} onChange={this.handleChange.bind(this, "longitude")}/>
                         </label>
                     </div>
                 </div>
                 <div className="row">
                     <div className="large-12 columns">
-                        <input id="cq-isPublic" type="checkbox" checked={this.state.isPublic} onChange={this.handleChange.bind(this, 'isPublic')}/><label htmlFor="cq-isPublic">Is public</label>
+                        <input id="cq-isPublic" type="checkbox" checked={this.state.isPublic} onChange={this.handleChange.bind(this, "isPublic")}/><label htmlFor="cq-isPublic">Is public</label>
                     </div>
                 </div>
 
@@ -77,7 +74,7 @@ module.exports = React.createClass({
         var state = {};
         var newVal = null;
 
-        if (ev.target.type === 'checkbox') {
+        if (ev.target.type === "checkbox") {
             newVal = ev.target.checked;
         } else {
             newVal = ev.target.value;
