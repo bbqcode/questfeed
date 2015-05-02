@@ -5,45 +5,65 @@ import { navigateAction } from "fluxible-router";
 import app from "../app";
 import HtmlDocument from "./HtmlDocument";
 
-function render(req, res, next) {
+let webpackStats;
 
-    var context = app.createContext();
+function renderApp(req, res, context, next) {
 
-    context.executeAction(navigateAction, { url: req.url }, function (err) {
-        let webpackStats;
+    if (process.env.NODE_ENV === "development") {
+        webpackStats = require("./webpack-stats.json");
 
-        if (process.env.NODE_ENV === "development") {
-            webpackStats = require("./webpack-stats.json");
+        // Do not cache webpack stats: the script file would change since
+        // hot module replacement is enabled in the development env
+        delete require.cache[require.resolve("./webpack-stats.json")];
+    }
 
-            // Do not cache webpack stats: the script file would change since
-            // hot module replacement is enabled in the development env
-            delete require.cache[require.resolve("./webpack-stats.json")];
-        }
+    // dehydrate the app and expose its state
+    const state = "window.App=" + serialize(app.dehydrate(context)) + ";";
 
-        if (err) {
-            if (err.statusCode && err.statusCode === 404) {
-                next();
-            } else {
-                next(err);
-            }
-            return;
-        }
+    const Application = app.getComponent();
 
-        var exposed = "window.App=" + serialize(app.dehydrate(context)) + ";";
+    try {
+        // Render the Application to string
+        const markup = React.renderToString(
+            <Application context={ context.getComponentContext() } />
+        );
 
-        const markup = React.renderToString(context.createElement());
+        // The application component is rendered to static markup
+        // and sent as response.
         const html = React.renderToStaticMarkup(
             <HtmlDocument
-                css={webpackStats.css}
+                context={ context.getComponentContext() }
+                lang={req.locale}
+                state={state}
                 markup={markup}
                 script={webpackStats.script}
-                state={exposed}
+                css={webpackStats.css}
             />
         );
         const doctype = "<!DOCTYPE html>";
         res.send(doctype + html);
+    }
+    catch (e) {
+        next(e);
+    }
+}
+
+function render(req, res, next) {
+
+    // Create a fluxible context (_csrf is needed by the fetchr plugin)
+    const context = app.createContext({
+        req: req,
+        xhrContext: {
+            _csrf: req.csrfToken()
+        }
     });
 
+    context.executeAction(navigateAction, { url: req.url }, function (err) {
+        if (err) {
+            console.error("BOOM!", err);
+        }
+        renderApp(req, res, context, next);
+    });
 }
 
 export default render;

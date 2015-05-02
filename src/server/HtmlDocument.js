@@ -1,6 +1,6 @@
 import React, { PropTypes } from "react";
 
-export default React.createClass({
+var HtmlDocument = React.createClass({
 
     propTypes: {
         state: PropTypes.string.isRequired,
@@ -39,3 +39,5 @@ export default React.createClass({
         );
     }
 });
+
+export default HtmlDocument;

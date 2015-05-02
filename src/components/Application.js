@@ -14,7 +14,7 @@ var Application = React.createClass({
         executeAction: React.PropTypes.func
     },
     propTypes: {
-        currentRoute: React.PropTypes.object.isRequired()
+        currentRoute: React.PropTypes.object
     },
     render() {
         var Handler = this.props.currentRoute.get("handler");

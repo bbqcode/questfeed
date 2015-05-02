@@ -1,9 +1,6 @@
-import QuestStore from "../stores/QuestStore";
 import uuid from "node-uuid";
 
 export default function (context, payload, done) {
-    var questStore = context.getStore(QuestStore);
-    
     var newQuest = {
         id: uuid.v4(),
         name: payload.name,
@@ -18,7 +15,7 @@ export default function (context, payload, done) {
 
     context.dispatch("CREATE_QUEST_START", newQuest);
 
-    context.service.create(newQuest, function (err, quest) {
+    context.service.create("quests", newQuest, {}, function (err, quest) {
         if (err) {
             context.dispatch("CREATE_QUEST_FAILURE", newQuest);
             done();
@@ -28,4 +25,4 @@ export default function (context, payload, done) {
         context.dispatch("CREATE_QUEST_SUCCESS", quest);
         done();
     });
-};
+}

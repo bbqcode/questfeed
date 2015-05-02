@@ -1,19 +1,18 @@
-
-var _quests = [];
+var QUESTS = [];
 
 export default {
-    name: 'quests',
+    name: "quests",
 
-    read: function (callback) {
+    read: function (req, resource, params, config, callback) {
         setTimeout(function () {
-            callback(null, _quests.concat());
+            callback(null, QUESTS.concat());
         }, 1000);
     },
-    create: function (quest, callback) {
-        _quests.push(quest);
+    create: function (req, resource, params, body, config, callback) {
+        QUESTS.push(params);
 
         setTimeout(function () {
-            callback(null, quest);
+            callback(null, params);
         }, 1000);
     }
 };

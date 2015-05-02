@@ -1,34 +1,43 @@
-var React = require("react");
+import React from "react";
+import { connectToStores } from "fluxible/addons";
 
-//var Reflux = require("reflux");
-//var { Navigation } = require("react-router");
+import QuestStore from "../stores/QuestStore";
+import receiveQuest from "../actions/receiveQuests";
 
-var QuestActions = require("../../app/scripts/actions/QuestActions");
-var QuestStore = require("../../app/scripts/stores/QuestStore");
+var QuestList = React.createClass({
+    contextTypes: {
+        executeAction: React.PropTypes.func.isRequired
+    },
 
-module.exports = React.createClass({
-    //mixins: [ Reflux.listenTo(QuestStore, "onChange"), Navigation ],
+    propTypes: {
+        quests: React.propTypes.array
+    },
 
     getInitialState() {
         return { quests: QuestStore.quests };
     },
 
     componentDidMount() {
-        QuestActions.getQuests();
-    },
-
-    onChange: function () {
-        this.setState({ quests: QuestStore.quests });
+        this.context.executeAction(receiveQuest, {});
     },
 
     render() {
         var quests = [];
-        for (var i in this.state.quests) {
-            if (this.state.quests.hasOwnProperty(i)) {
-                var quest = this.state.quests[i];
+        for (var i in this.props.quests) {
+            if (this.props.quests.hasOwnProperty(i)) {
+                var quest = this.props.quests[i];
                 quests.push(<li key={quest.id}>{quest.name}</li>);
             }
         }
         return (<ul>{quests}</ul>);
     }
 });
+
+
+QuestList = connectToStores(QuestList, [QuestStore], function (stores) {
+    return {
+        quests: stores.QuestStore.getQuests()
+    };
+});
+
+export default QuestList;

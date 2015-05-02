@@ -1,8 +1,12 @@
 import React from "react";
 
-import QuestActions from "../../app/scripts/actions/QuestActions";
+import createQuest from "../actions/createQuest";
 
 export default React.createClass({
+    contextTypes: {
+        executeAction: React.PropTypes.func.isRequired
+    },
+
     getInitialState() {
         return {
             id: "",
@@ -97,6 +101,6 @@ export default React.createClass({
             isPublic: this.state.isPublic
         };
 
-        QuestActions.createQuest(data);
+        this.context.executeAction(createQuest, data, function () {});
     }
 });
