@@ -10,7 +10,7 @@ var QuestList = React.createClass({
     },
 
     propTypes: {
-        quests: React.propTypes.array
+        quests: React.PropTypes.object
     },
 
     getInitialState() {
