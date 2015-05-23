@@ -39,8 +39,6 @@
     "webpack-dev-server": "^1.8.2"
   },
   "scripts": {
-    "mongo": "./scripts/mongo.sh",
-    "set-permissions": "chmod u+rwx scripts/servers.sh",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "NODE_ENV=development node index"
   },
