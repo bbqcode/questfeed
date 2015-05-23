@@ -20,6 +20,7 @@
     "react": "^0.13.2",
     "sequelize": "^2.1.0",
     "serialize-javascript": "^1.0.0",
+    "serve-favicon": "^2.2.1",
     "when": "^3.7.2",
     "zurb-foundation-5": "^5.4.7"
   },

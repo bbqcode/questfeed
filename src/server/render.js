@@ -60,7 +60,7 @@ function render(req, res, next) {
 
     context.executeAction(navigateAction, { url: req.url }, function (err) {
         if (err) {
-            console.error("BOOM!", err);
+            console.error("BOOM!", err, req.url);
         }
         renderApp(req, res, context, next);
     });

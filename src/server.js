@@ -1,23 +1,23 @@
+import path from "path";
 import express from "express";
-
-var csrf = require("csurf");
-var bodyParser = require("body-parser");
-var cookieParser = require("cookie-parser");
+import csrf from "csurf";
+import bodyParser from "body-parser";
+import cookieParser from "cookie-parser";
+import favicon from "serve-favicon";
 
 import render from "./server/render";
 
 import app from "./app";
 
 // Initialize express server
-
 const server = express();
 
 server.use(cookieParser());
 server.use(bodyParser.json());
 server.use(csrf({cookie: true}));
+server.use(favicon(path.resolve(__dirname, "../assets/favicon.ico")));
 
 // On development, serve the static files from the webpack dev server.
-
 if (server.get("env") === "development") {
     require("../webpack/server");
 }
