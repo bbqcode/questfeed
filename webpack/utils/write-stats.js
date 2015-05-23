@@ -27,8 +27,8 @@ function writeStats(stats) {
         }
 
         return chunk
-            .filter(chunk => path.extname(chunk) === `.${ext}`) // filter by extension
-            .map(chunk => `${publicPath}${chunk}`); // add public path to it
+            .filter(c => path.extname(c) === `.${ext}`) // filter by extension
+            .map(c => `${publicPath}${c}`); // add public path to it
     }
 
     const script = getChunks("main", "js");

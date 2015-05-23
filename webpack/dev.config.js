@@ -17,7 +17,7 @@ export default {
         "main": [
             `webpack-dev-server/client?http://${WEBPACK_HOST}:${WEBPACK_PORT}`,
             "webpack/hot/only-dev-server",
-            './src/client'
+            "./src/client"
         ]
     },
     output: {
