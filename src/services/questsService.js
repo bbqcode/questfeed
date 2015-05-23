@@ -1,18 +1,16 @@
-var QUESTS = [];
+import db from "../database/db";
 
 export default {
     name: "quests",
 
     read: function (req, resource, params, config, callback) {
-        setTimeout(function () {
-            callback(null, QUESTS.concat());
-        }, 1000);
+        db.Quest.findAll().then(function(quests) {
+            callback(null, quests);
+        });
     },
     create: function (req, resource, params, body, config, callback) {
-        QUESTS.push(params);
-
-        setTimeout(function () {
+        db.Quest.create(params).then(function () {
             callback(null, params);
-        }, 1000);
+        });
     }
 };

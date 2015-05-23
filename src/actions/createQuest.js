@@ -1,16 +1,18 @@
 import uuid from "node-uuid";
+import { navigateAction } from "fluxible-router";
 
 export default function (context, payload, done) {
+    var data = payload.data;
     var newQuest = {
         id: uuid.v4(),
-        name: payload.name,
-        description: payload.description,
-        experience: payload.experience,
+        name: data.name,
+        description: data.description,
+        experience: data.experience,
 
-        latitude: payload.latitude,
-        longitude: payload.longitude,
+        latitude: data.latitude,
+        longitude: data.longitude,
 
-        isPublic: payload.isPublic
+        isPublic: data.isPublic
     };
 
     context.dispatch("CREATE_QUEST_START", newQuest);
@@ -23,6 +25,11 @@ export default function (context, payload, done) {
         }
 
         context.dispatch("CREATE_QUEST_SUCCESS", quest);
+
+        context.executeAction(navigateAction, {
+            url: payload.destination.to
+        });
+
         done();
     });
 }

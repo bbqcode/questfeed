@@ -90,17 +90,20 @@ export default React.createClass({
     handleSubmit: function (ev) {
         ev.preventDefault();
 
-        var data = {
-            name: this.state.name,
-            description: this.state.description,
-            experience: this.state.experience,
+        var payloads = {
+            destination: { to: "/quests" },
+            data: {
+                name: this.state.name,
+                description: this.state.description,
+                experience: this.state.experience,
 
-            latitude: this.state.latitude,
-            longitude: this.state.longitude,
+                latitude: this.state.latitude,
+                longitude: this.state.longitude,
 
-            isPublic: this.state.isPublic
+                isPublic: this.state.isPublic
+            }
         };
 
-        this.context.executeAction(createQuest, data, function () {});
+        this.context.executeAction(createQuest, payloads, function () {});
     }
 });

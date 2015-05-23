@@ -1,0 +1,18 @@
+{
+  "development": {
+    "dialect": "",
+    "database": "",
+    "username": "",
+    "password": "",
+    "host": "",
+    "port": ""
+  },
+  "production": {
+    "dialect": "",
+    "database": "",
+    "username": "",
+    "password": "",
+    "host": "",
+    "port": ""
+  }
+}
