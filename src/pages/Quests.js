@@ -5,20 +5,12 @@ import QuestStore from "../stores/QuestStore";
 import receiveQuest from "../actions/receiveQuests";
 
 var QuestList = React.createClass({
-    contextTypes: {
-        executeAction: React.PropTypes.func.isRequired
-    },
-
     propTypes: {
         quests: React.PropTypes.object
     },
 
     getInitialState() {
         return { quests: QuestStore.quests };
-    },
-
-    componentDidMount() {
-        this.context.executeAction(receiveQuest, {});
     },
 
     render() {

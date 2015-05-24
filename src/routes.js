@@ -2,6 +2,8 @@ import Home from "./pages/Home";
 import Quests from "./pages/Quests";
 import CreateQuest from "./pages/CreateQuest";
 
+import receiveQuests from "./actions/receiveQuests";
+
 export default {
     home: {
         path: "/",
@@ -17,9 +19,7 @@ export default {
         method: "get",
         handler: Quests,
         label: "Quests",
-        action(context, payload, done) {
-            done();
-        }
+        action: receiveQuests
     },
     createQuest: {
         path: "/createQuest",
