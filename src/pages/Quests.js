@@ -2,7 +2,6 @@ import React from "react";
 import { connectToStores } from "fluxible/addons";
 
 import QuestStore from "../stores/QuestStore";
-import receiveQuest from "../actions/receiveQuests";
 
 var QuestList = React.createClass({
     propTypes: {
